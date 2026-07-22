@@ -3,112 +3,55 @@ import Image from "next/image";
 const instagram = "https://www.instagram.com/adrianapalharesacessorios/";
 
 const products = [
-  {
-    title: "Bolsas de grife",
-    copy: "Peças selecionadas para elevar todos os looks.",
-    image: "/bolsa.jpeg",
-    className: "bag",
-  },
-  {
-    title: "Perfumes originais",
-    copy: "Fragrâncias marcantes, clássicas e desejadas.",
-    image: "/perfume.jpeg",
-    className: "perfume",
-  },
-  {
-    title: "Kate Spade New York",
-    copy: "Uma fragrância feminina, delicada e cheia de personalidade.",
-    image: "/perfume-kate-spade.jfif",
-    className: "perfume-new",
-  },
+  { name: "Sauvage Dior", category: "Masculino · Parfum", image: "/sauvage.jfif", tone: "dark", featured: true },
+  { name: "Scandal", category: "Jean Paul Gaultier · Feminino", image: "/scandal.jfif", tone: "pink" },
+  { name: "Good Girl", category: "Carolina Herrera · Feminino", image: "/good-girl.webp", tone: "light" },
+  { name: "212 VIP", category: "Carolina Herrera · Feminino", image: "/212-line.jfif", tone: "pink" },
+  { name: "212 Men", category: "Carolina Herrera · Masculino", image: "/212-men.jfif", tone: "light" },
+  { name: "Kate Spade", category: "New York · Feminino", image: "/perfume-kate-spade.jfif", tone: "light" },
 ];
 
-function Arrow() {
-  return <span aria-hidden="true">↗</span>;
-}
+const Arrow = () => <span aria-hidden="true">→</span>;
 
 export default function Home() {
-  return (
-    <main>
-      <div className="announcement">Envios para todo o Brasil <span>•</span> Loja oficial em Jataí — GO</div>
+  return <main>
+    <div className="topbar"><span>Autenticidade em cada escolha</span><b>Frete para todo o Brasil</b><span>Loja física em Jataí — GO</span></div>
+    <header className="nav">
+      <a className="logo" href="#inicio"><i>AP</i><span>Adriana Palhares<small>acessórios & perfumes</small></span></a>
+      <nav><a href="#perfumes">Perfumes</a><a href="#como-comprar">Como comprar</a><a href="#sobre">A loja</a></nav>
+      <a className="instagram" href={instagram} target="_blank" rel="noreferrer">Comprar no Instagram <Arrow /></a>
+    </header>
 
-      <header className="header">
-        <a className="brand" href="#inicio" aria-label="Adriana Palhares Acessórios — início">
-          <span className="brand-mark">AP</span>
-          <span>Adriana Palhares<small>Acessórios</small></span>
-        </a>
-        <nav aria-label="Navegação principal">
-          <a href="#colecao">Coleções</a>
-          <a href="#sobre">Nossa loja</a>
-          <a href="#atendimento">Atendimento</a>
-        </nav>
-        <a className="header-cta" href={instagram} target="_blank" rel="noreferrer">Instagram <Arrow /></a>
-      </header>
+    <section className="hero" id="inicio">
+      <div className="hero-media"><Image src="/sauvage.jfif" alt="Perfume Sauvage Dior" fill priority sizes="(max-width: 800px) 100vw, 55vw" /></div>
+      <div className="hero-panel">
+        <p className="kicker">Perfumes originais · pronta entrega</p>
+        <h1>Perfumes que<br /><em>deixam marca.</em></h1>
+        <p className="hero-copy">Seleção de fragrâncias desejadas, presentes especiais e atendimento de verdade para você escolher com segurança.</p>
+        <div className="hero-buttons"><a className="button" href="#perfumes">Ver novidades <Arrow /></a><a className="subtle-link" href={instagram} target="_blank" rel="noreferrer">Falar com a loja</a></div>
+        <div className="hero-note"><strong>100%</strong><span>Produtos selecionados<br />para você presentear.</span></div>
+      </div>
+      <div className="hero-label">Seu perfume<br /><b>favorito</b><br />está aqui.</div>
+    </section>
 
-      <section className="hero" id="inicio">
-        <div className="hero-copy">
-          <p className="eyebrow">Curadoria que transforma o seu estilo</p>
-          <h1>O luxo mora<br />nos <em>detalhes.</em></h1>
-          <p className="hero-text">Semijoias, bolsas de grife, perfumes originais e acessórios escolhidos para mulheres que fazem da elegância sua assinatura.</p>
-          <div className="hero-actions">
-            <a className="button primary" href="#colecao">Descobrir coleções <Arrow /></a>
-            <a className="text-link" href={instagram} target="_blank" rel="noreferrer">Comprar pelo Instagram</a>
-          </div>
-          <div className="trust-row" aria-label="Diferenciais da loja">
-            <span>✦ Produtos selecionados</span><span>✦ Envio nacional</span><span>✦ Atendimento pessoal</span>
-          </div>
-        </div>
-        <div className="hero-visual">
-          <div className="hero-image-frame">
-            <Image src="/bolsa.jpeg" alt="Bolsa de grife em tom bege" fill priority sizes="(max-width: 800px) 100vw, 46vw" />
-          </div>
-          <div className="floating-card"><span>Peças que</span><strong>contam histórias</strong></div>
-          <div className="seal">Curadoria<br /><b>exclusiva</b><br />Jataí • GO</div>
-        </div>
-      </section>
+    <section className="benefits"><div><b>01</b><span><strong>Originais e selecionados</strong>Marcas desejadas e escolha cuidadosa.</span></div><div><b>02</b><span><strong>Atendimento pessoal</strong>Te ajudamos a encontrar o ideal.</span></div><div><b>03</b><span><strong>Entrega para todo Brasil</strong>Receba onde você estiver.</span></div></section>
 
-      <section className="collections section" id="colecao">
-        <div className="section-heading">
-          <div><p className="eyebrow">Encontre o seu próximo desejo</p><h2>Escolhas que<br /><em>encantam.</em></h2></div>
-          <p>Uma curadoria diversa para acompanhar suas melhores versões — do cotidiano às ocasiões inesquecíveis.</p>
-        </div>
-        <div className="product-grid">
-          {products.map((product, index) => (
-            <a className={`product-card ${product.className}`} href={instagram} target="_blank" rel="noreferrer" key={product.title}>
-              <div className="product-image">{product.className === "perfume-new" && <span className="new-badge">Novidade</span>}<Image src={product.image} alt={product.title} fill sizes="(max-width: 700px) 100vw, 33vw" /></div>
-              <div className="product-info"><span>0{index + 1}</span><div><h3>{product.title}</h3><p>{product.copy}</p><b className="shop-label">Ver no Instagram</b></div><Arrow /></div>
-            </a>
-          ))}
-        </div>
-        <div className="category-strip">
-          <span>Semijoias</span><i>✦</i><span>Bolsas</span><i>✦</i><span>Perfumes</span><i>✦</i><span>Presentes</span><i>✦</i><span>Acessórios</span>
-        </div>
-      </section>
+    <section className="catalog" id="perfumes">
+      <div className="section-head"><div><p className="kicker">A seleção da semana</p><h2>Escolha sua<br /><em>assinatura.</em></h2></div><p>Perfumes femininos e masculinos para transformar os seus momentos em memória.</p></div>
+      <div className="filters"><span>Todos os perfumes</span><span>Femininos</span><span>Masculinos</span><a href={instagram} target="_blank" rel="noreferrer">Pedir catálogo completo <Arrow /></a></div>
+      <div className="product-grid">
+        {products.map((product, index) => <a key={product.name} className={`product ${product.tone} ${product.featured ? "featured" : ""}`} href={instagram} target="_blank" rel="noreferrer">
+          <div className="product-photo"><Image src={product.image} alt={product.name} fill sizes="(max-width: 600px) 50vw, 30vw" />{index < 2 && <span className="pill">Novidade</span>}</div>
+          <div className="product-details"><div><small>{product.category}</small><h3>{product.name}</h3></div><i><Arrow /></i></div>
+        </a>)}
+      </div>
+    </section>
 
-      <section className="story section" id="sobre">
-        <div className="story-image"><Image src="/perfume-kate-spade.jfif" alt="Perfume Kate Spade New York selecionado pela Adriana Palhares Acessórios" fill sizes="(max-width: 800px) 100vw, 45vw" /></div>
-        <div className="story-copy">
-          <p className="eyebrow light">De Jataí para todo o Brasil</p>
-          <h2>Mais que acessórios,<br /><em>uma experiência.</em></h2>
-          <p>Na Adriana Palhares Acessórios, cada escolha é feita com cuidado. Unimos qualidade, autenticidade e atendimento próximo para você comprar com confiança, onde estiver.</p>
-          <div className="story-points"><div><b>01</b><span><strong>Curadoria cuidadosa</strong>Peças escolhidas uma a uma.</span></div><div><b>02</b><span><strong>Atendimento próximo</strong>Ajuda de verdade para escolher.</span></div><div><b>03</b><span><strong>Entrega nacional</strong>Seu pedido chega em todo o Brasil.</span></div></div>
-        </div>
-      </section>
+    <section className="signature" id="sobre"><div className="signature-copy"><p className="kicker">Adriana Palhares Acessórios</p><h2>Elegância não precisa<br />ser <em>complicada.</em></h2><p>De Jataí para todo o Brasil, reunimos perfumes, semijoias, bolsas e acessórios para celebrar a sua melhor versão.</p><a className="outline-button" href={instagram} target="_blank" rel="noreferrer">Conhecer pelo Instagram <Arrow /></a></div><div className="signature-photo"><Image src="/good-girl.webp" alt="Perfume Good Girl Carolina Herrera" fill sizes="(max-width: 800px) 100vw, 45vw" /></div></section>
 
-      <section className="cta-section" id="atendimento">
-        <p className="eyebrow">Seu próximo favorito está aqui</p>
-        <h2>Vamos encontrar a peça<br /><em>perfeita para você?</em></h2>
-        <p>Fale com a nossa equipe pelo Instagram e receba atendimento personalizado.</p>
-        <a className="button light-button" href={instagram} target="_blank" rel="noreferrer">Chamar no Instagram <Arrow /></a>
-      </section>
+    <section className="buy" id="como-comprar"><p className="kicker">É muito simples comprar</p><h2>Escolha. Chame.<br /><em>Receba.</em></h2><div className="buy-steps"><div><b>1</b><strong>Encontre seu favorito</strong><span>Explore a nossa seleção.</span></div><div><b>2</b><strong>Fale pelo Instagram</strong><span>Tire dúvidas e confirme o pedido.</span></div><div><b>3</b><strong>Receba com carinho</strong><span>Enviamos para todo o Brasil.</span></div></div><a className="button light" href={instagram} target="_blank" rel="noreferrer">Quero comprar agora <Arrow /></a></section>
 
-      <footer>
-        <div className="footer-brand"><span className="brand-mark">AP</span><div>Adriana Palhares<small>Acessórios</small></div></div>
-        <div><strong>Visite</strong><p>Loja oficial em Jataí — Goiás</p><p>Envios para todo o Brasil</p></div>
-        <div><strong>Acompanhe</strong><a href={instagram} target="_blank" rel="noreferrer">@adrianapalharesacessorios</a></div>
-        <p className="copyright">© 2026 Adriana Palhares Acessórios</p>
-      </footer>
-      <a className="mobile-shop" href={instagram} target="_blank" rel="noreferrer">Comprar pelo Instagram <Arrow /></a>
-    </main>
-  );
+    <footer><a className="logo" href="#inicio"><i>AP</i><span>Adriana Palhares<small>acessórios & perfumes</small></span></a><p>Jataí — Goiás · Enviamos para todo o Brasil</p><a href={instagram} target="_blank" rel="noreferrer">@adrianapalharesacessorios</a></footer>
+    <a className="mobile-cta" href={instagram} target="_blank" rel="noreferrer">Comprar pelo Instagram <Arrow /></a>
+  </main>;
 }
